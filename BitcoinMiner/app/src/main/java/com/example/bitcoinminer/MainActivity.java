@@ -44,6 +44,7 @@ public class MainActivity extends Activity {
 		toggleButton = (Button) findViewById(R.id.buttonMine);
 		toggleButton.setEnabled(false);
 
+		// This loads the state from your phone's local storage.
 		SharedPreferences settings = getSharedPreferences(PREFS, 0);
 		mining = Boolean.valueOf(settings.getString("mining_state_saved", ""));
 		username = settings.getString("username_saved", "");
@@ -56,6 +57,7 @@ public class MainActivity extends Activity {
 
     public void onStop() {
     	super.onStop();
+		//This saves the state onto your phone's local storage.
         SharedPreferences.Editor editor = getSharedPreferences(PREFS,0).edit();
         editor.putString("username_saved", username);
 		editor.putString("mining_state_saved", String.valueOf(mining));
